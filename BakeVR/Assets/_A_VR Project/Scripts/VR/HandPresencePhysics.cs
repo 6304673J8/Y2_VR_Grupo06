@@ -7,16 +7,46 @@ public class HandPresencePhysics : MonoBehaviour
     public Transform target;
     private Rigidbody rb;
 
+    //Not Interactable Collision
     [Tooltip("If nonInteractable stops hands movement")]
     public Renderer nonPhysicalHand;
     [Tooltip("Distance required for nonPhysicalHand to render")]
     public float showNonPhysicalHandDistance = 0.05f;
 
+    //Interactable Collision
+    private Collider[] handColiiders;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        handColiiders = GetComponentsInChildren<Collider>();
     }
+
+    #region "Interacting With Elements"
+
+    public void EnableHandCollider()
+    {
+        foreach (var item in handColiiders)
+        {
+            item.enabled = true;
+        }
+    }
+
+    public void DisableHandCollider()
+    {
+        foreach (var item in handColiiders)
+        {
+            item.enabled = false;
+        }
+    }
+
+    // Enabling hand collisions delayed after letting an item go
+    public void EnableHandColliderDelay(float delay)
+    {
+        Invoke("EnableHandCollider", delay);
+    }
+    #endregion
 
     private void Update()
     {
@@ -32,7 +62,6 @@ public class HandPresencePhysics : MonoBehaviour
             nonPhysicalHand.enabled = false;
         }
     }
-
 
     // Called every fixed frame-rate frame, 0.01 (100 calls per second)
     void FixedUpdate()
