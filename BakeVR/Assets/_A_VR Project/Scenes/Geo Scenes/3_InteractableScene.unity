@@ -1677,16 +1677,16 @@ MonoBehaviour:
   m_AudioClipForOnHoverCanceled: {fileID: 0}
   m_PlayHapticsOnSelectEntered: 1
   m_HapticSelectEnterIntensity: 0.105
-  m_HapticSelectEnterDuration: 1
+  m_HapticSelectEnterDuration: 0.24
   m_PlayHapticsOnSelectExited: 0
   m_HapticSelectExitIntensity: 0
   m_HapticSelectExitDuration: 0
   m_PlayHapticsOnSelectCanceled: 0
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
-  m_PlayHapticsOnHoverEntered: 0
-  m_HapticHoverEnterIntensity: 0
-  m_HapticHoverEnterDuration: 0
+  m_PlayHapticsOnHoverEntered: 1
+  m_HapticHoverEnterIntensity: 0.045
+  m_HapticHoverEnterDuration: 0.05
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
@@ -2736,7 +2736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821680107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.339, y: 0.964, z: -0.791}
+  m_LocalPosition: {x: 0.574, y: 0.964, z: -0.791}
   m_LocalScale: {x: 0.11207752, y: 0.11207752, z: 0.11207752}
   m_Children: []
   m_Father: {fileID: 0}
