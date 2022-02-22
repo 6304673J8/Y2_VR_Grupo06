@@ -1338,6 +1338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Interaction Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3480365714217767198, guid: 9db4adbcf9d49c940ba639c0243e6c82, type: 3}
+      propertyPath: m_ActionAssets.Array.data[0]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: a14f8af4a88441f4fbca6721c09abd32, type: 3}
     - target: {fileID: 3480365714217767199, guid: 9db4adbcf9d49c940ba639c0243e6c82, type: 3}
       propertyPath: m_XROrigin
       value: 
