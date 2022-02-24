@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LanternScript : MonoBehaviour
 {
+
+    GameObject objectCollided;
     void Start()
     {
 
@@ -21,7 +23,15 @@ public class LanternScript : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
             //Aquí hay que hacer el sendMessage para hacer visible el objeto
-            
+            if (hit.collider.tag=="invObject")
+            {
+               objectCollided = hit.collider.gameObject;
+
+                objectCollided.SendMessage("getVisible");
+
+
+            }
+
         }
         else
         {
