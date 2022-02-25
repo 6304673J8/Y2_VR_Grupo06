@@ -7,6 +7,7 @@ public class QuickSceneChange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if(other.CompareTag(""))
         SceneManager.LoadScene(loadScene);
     }
 }
