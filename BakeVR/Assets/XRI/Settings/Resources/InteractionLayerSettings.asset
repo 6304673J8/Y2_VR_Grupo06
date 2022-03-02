@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LayerNames:
   - Default
-  - Teleport
+  - TransparentFX
+  - 
+  - 
+  - Water
+  - UI
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grabbable
   - 
   - 
   - 
