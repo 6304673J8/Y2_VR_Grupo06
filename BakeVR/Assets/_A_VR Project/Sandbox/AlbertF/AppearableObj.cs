@@ -19,8 +19,6 @@ public class AppearableObj : MonoBehaviour
         {
             mr.enabled = true;
         }
-
-
         
     }
 }
