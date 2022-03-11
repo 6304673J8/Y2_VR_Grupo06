@@ -7,6 +7,10 @@ public class ComplexSceneTransitionManager : MonoBehaviour
 {
     public FadeScreen fadeScreen;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public void GoToSceneAsync(int sceneIndex)
     {
         // Calling related Couroutine
