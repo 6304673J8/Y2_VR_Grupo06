@@ -9,19 +9,20 @@ public class SocketTagManager : XRSocketInteractor
     //GameObject in Scene with Script that generates that code
     public string targetTag = string.Empty;
 
-    public override bool CanHover(IXRHoverInteractable interactable)
+    public override bool CanHover(XRBaseInteractable interactable)
     {
-        return base.CanHover(interactable);
+        return base.CanHover(interactable) && MatchUsingTag(interactable);
     }
 
-    public override bool CanSelect(IXRSelectInteractable interactable)
+    public override bool CanSelect(XRBaseInteractable interactable)
     {
-        return base.CanSelect(interactable);
+        return base.CanSelect(interactable) && MatchUsingTag(interactable);
     }
 
     //Custom Functionalities 
-    /*private bool MatchUsingTag(XRBaseInteractable interactable)
+    //Returns True Or False if Proper Tag 
+    private bool MatchUsingTag(XRBaseInteractable interactable)
     {
-
-    }*/
+        return interactable.CompareTag(targetTag);
+    }
 }
