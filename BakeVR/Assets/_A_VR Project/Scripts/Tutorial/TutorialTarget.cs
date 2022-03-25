@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialTarget : MonoBehaviour
 {
-    public TutorialManager tutorialManager;
+    //public TutorialManager tutorialManager;
     public GameObject oneShotAudioPrefab;
     public AudioClip hitClip;
     public ParticleSystem hitParticles;
@@ -23,6 +23,7 @@ public class TutorialTarget : MonoBehaviour
         this.gameObject.SetActive(false);
         Invoke("ResetTarget", 2f);
     }
+
     void ResetTarget()
     {
         this.gameObject.SetActive(true);

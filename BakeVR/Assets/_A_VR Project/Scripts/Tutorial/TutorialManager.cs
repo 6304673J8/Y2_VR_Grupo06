@@ -26,8 +26,14 @@ public class TutorialManager : MonoBehaviour
 	private List<TutorialUI> currentUIs = new List<TutorialUI>();
 
 	[Header("Tutorial 1")]
-	public Color neutralColor;
-	public Color yellowColor;
+	public TutorialCubesManager tutorialCubesManager;
+	public TutorialCubesManager tutorialButtonManager;
+	public GameObject tutorialTable;
+	public GameObject tutorialButtonTable;
+	public GameObject UIAttachPoint;
+	public GameObject UIButtonAttachPoint;
+	//	public Color neutralColor;
+	//	public Color yellowColor;
 	//public MeshRenderer leftHandColliderMesh;
 	//public MeshRenderer rightHandColliderMesh;
 	public LayerMask handsLayer;
@@ -40,8 +46,8 @@ public class TutorialManager : MonoBehaviour
 	private List<GameObject> spawnedCubes = new List<GameObject>();
 	public Vector3 cubeSpawnPos;
 	public GameObject explodingTarget;
-	//public GameObject buttonInstantiator;
-	//public bool proceedButton { get; set; } = false;
+	public GameObject buttonHolder;
+	public bool proceedButton { get; set; } = false;
 
 
 	//[Header("Ready")]
@@ -67,14 +73,17 @@ public class TutorialManager : MonoBehaviour
 		// INTRO
 		yield return Tutorial_0();
 
-		// BASIC MOVEMENT
+		// BASIC INPUT
 		//- Finger movement -
 		yield return Tutorial_1_0();
 		//- Hands movement
-		//yield return Tutorial_1_1();
+		yield return Tutorial_1_1();
+		//- Hands Interaction
+		yield return Tutorial_1_2();
 		// BASIC INTERACTION
 		//- Grab and Throw Objects -
 		yield return Tutorial_2_0();
+		yield return Tutorial_2_1();
 
 	}
 
@@ -85,6 +94,8 @@ public class TutorialManager : MonoBehaviour
 		//yield return new WaitUntil(() => !audioSource.isPlaying);
 		yield return new WaitForSeconds(2f);
 	}
+
+	// BASIC INPUT FUNCTION - TRIGGER
 	IEnumerator Tutorial_1_0()
 	{
 		//audioSource.clip = audioClips[1];
@@ -111,8 +122,11 @@ public class TutorialManager : MonoBehaviour
 		rightUI.text.text = "Pulsa los gatillos para mover los dedos de las manos.";
 		currentUIs.Add(rightUI);
 
+		//While The Required Button Is Not Pressed, UIs Won't Dissappear
 		bool validLeftH = false;
 		bool validRightH = false;
+		yield return new WaitForSeconds(.4f);
+
 		while (!validLeftH || !validRightH)
 		{
 			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
@@ -141,64 +155,91 @@ public class TutorialManager : MonoBehaviour
 		currentUIs.Clear();
 	}
 
-	/*IEnumerator Tutorial_1_1()
+	// BASIC INTERACTION - PHYSICS
+	IEnumerator Tutorial_1_1()
 	{
 		//audioSource.clip = audioClips[2];
 		//audioSource.Play();
+		bool cleanedTable = false;
 		yield return new WaitForSeconds(0.5f);
-		//Instantiate the UIs in the hands
-		//LeftHand
-		var leftUI = Instantiate(tutorialUIPrefab,
-					leftHandAttachPoint.transform.position + new Vector3(-0.2f, 0.1f, 0f),
-					Quaternion.identity).GetComponent<TutorialUI>();
+		
+		//Instantiate The UI In The Proper Place
+		tutorialTable.gameObject.SetActive(true);
+		tutorialCubesManager.cleanedTable = false;
 
-		leftUI.StartUI(playerEye, leftHandAttachPoint.gameObject,
-					new Vector3(-0.2f, 0.1f, 0f), TutorialUI.AttachToH.LEFT_H);
-
-		leftUI.text.text = "Pulsa los gatillos para mover los dedos de las manos.";
-		currentUIs.Add(leftUI);
-
-		//RightHand
-		var rightUI = Instantiate(tutorialUIPrefab,
-			rightHandAttachPoint.transform.position + new Vector3(0.2f, 0.1f, 0f),
+		var cubesUI = Instantiate(tutorialUIPrefab,
+			UIAttachPoint.transform.position + new Vector3(-0.2f, 0.2f, 0f),
 			Quaternion.identity).GetComponent<TutorialUI>();
 
-		rightUI.StartUI(playerEye, rightHandAttachPoint.gameObject, new Vector3(0.2f, 0.1f, 0f), TutorialUI.AttachToH.RIGHT_H);
-		rightUI.text.text = "Pulsa los gatillos para mover los dedos de las manos.";
-		currentUIs.Add(rightUI);
+		cubesUI.StartUI(playerEye, UIAttachPoint.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
 
-		bool validLeftH = false;
-		bool validRightH = false;
-		while (!validLeftH || !validRightH)
+		cubesUI.text.text = "Usa tus manos para tirar los cubos de la mesa.";
+
+		while (!cleanedTable)
 		{
 			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
-			if (inputComprobationManager.b_lTriggerIsActive && !validLeftH)
+			if (tutorialCubesManager.cleanedTable == true && !cleanedTable)
 			{
 				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
-				validLeftH = true;
-				Debug.Log("I PRESS LEFT");
-				currentUIs[0].ToggleThumbsUp(true);
-			}
-			if (inputComprobationManager.b_rTriggerIsActive && !validRightH)
-			{
-				//Instantiate(oneshotAudioPrefab, rightHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
-				validRightH = true;
-				Debug.Log("I PRESS RIGHT");
-				currentUIs[1].ToggleThumbsUp(true);
+				cleanedTable = true;
+				Debug.Log("CLEANED TABLE");
 			}
 			yield return new WaitForEndOfFrame();
 		}
+		cubesUI.ToggleThumbsUp(true);
+		yield return new WaitForSeconds(.4f);
 
 		//audioSource.Stop();
 		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(.4f);
-		foreach (var ui in currentUIs)
-		{
-			Destroy(ui.gameObject);
-		}
-		currentUIs.Clear();
-	}*/
+		Destroy(cubesUI.gameObject);
+		tutorialTable.gameObject.SetActive(false);
+	}
 
+	// BASIC INTERACTION - PHYSICS + BUTTON
+	IEnumerator Tutorial_1_2()
+	{
+		//audioSource.clip = audioClips[2];
+		//audioSource.Play();
+		bool cleanedButtonTable = false;
+		yield return new WaitForSeconds(0.5f);
+
+		//Instantiate The UI In The Proper Place
+		tutorialButtonTable.gameObject.SetActive(true);
+		tutorialButtonManager.cleanedTable = false;
+
+		var buttonUI = Instantiate(tutorialUIPrefab,
+			UIButtonAttachPoint.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+			Quaternion.identity).GetComponent<TutorialUI>();
+
+		buttonUI.StartUI(playerEye, UIButtonAttachPoint.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		buttonUI.text.text = "Presiona el botón y facilita tú trabajo.";
+
+		while (!cleanedButtonTable)
+		{
+			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+			if (tutorialButtonManager.cleanedTable == true && !cleanedButtonTable)
+			{
+				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				cleanedButtonTable = true;
+				Debug.Log("CLEANED TABLE");
+			}
+			yield return new WaitForEndOfFrame();
+		}
+		buttonUI.ToggleThumbsUp(true);
+		yield return new WaitForSeconds(.4f);
+
+		//audioSource.Stop();
+		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		yield return new WaitForSeconds(.4f);
+		Destroy(buttonUI.gameObject);
+		tutorialButtonTable.gameObject.SetActive(false);
+	}
+
+	// BASIC INTERACTION FUNCTION - GRIP + THROW
 	IEnumerator Tutorial_2_0()
 	{
 		//audioSource.Stop();
@@ -220,11 +261,12 @@ public class TutorialManager : MonoBehaviour
 		cubeUI.StartUI(playerEye, explosiveCube.gameObject,
 			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
 
-		cubeUI.text.text = "Usa el gatillo del dedo índice para agarrar y soltar objetos.";
+		cubeUI.text.text = "Usa el gatillo del dedo medio para agarrar y soltar objetos.";
 
+		//tutorialInteractable Is The Explosive Cube GameObject
+		//While The Required GameObject Is Not -Grabbed- And -Released- UIs Won't Dissappear
 		while (!grabbed || !released)
 		{
-			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
 			if (tutorialInteractable.m_Held == true && !grabbed)
 			{
 				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
@@ -235,9 +277,8 @@ public class TutorialManager : MonoBehaviour
 			{
 				//Instantiate(oneshotAudioPrefab, rightHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
 				released = true;
-				Debug.Log("I LETTED GO");
+				Debug.Log("I LET GO");
 			}
-
 			yield return new WaitForEndOfFrame();
 		}
 		cubeUI.ToggleThumbsUp(true);
@@ -250,7 +291,7 @@ public class TutorialManager : MonoBehaviour
 		//audioSource.Play();
 		yield return new WaitForSeconds(1f);
 
-		cubeUI.text.text = "Lanza el cubo a la diana.";
+		cubeUI.text.text = "Lanza el cubo al objetivo.";
 		cubeUI.ToggleThumbsUp(false);
 		Rigidbody rb = explosiveCube.GetComponent<Rigidbody>();
 		rb.velocity = Vector3.zero;
@@ -262,6 +303,50 @@ public class TutorialManager : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 
 		Destroy(cubeUI.gameObject);
+	}
 
+	IEnumerator Tutorial_2_1()
+	{
+		//audioSource.Stop();
+		//audioSource.clip = audioClips[5];
+		//audioSource.Play();
+		//bool thrown = false;
+		//bool exploded = false;
+		yield return new WaitForSeconds(.2f);
+		buttonHolder.gameObject.SetActive(true);
+		yield return new WaitUntil(() => proceedButton);
+		
+		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+
+		/*var cubeUI = Instantiate(tutorialUIPrefab,
+			explosiveCube.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+			Quaternion.identity).GetComponent<TutorialUI>();
+
+		cubeUI.StartUI(playerEye, explosiveCube.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		cubeUI.text.text = "Usa el gatillo del dedo medio para agarrar y soltar objetos.";
+		*/
+		foreach(GameObject obj in spawnedCubes)
+        {
+			yield return new WaitForSeconds(0.05f);
+			Destroy(obj);
+		}
+		spawnedCubes.Clear();
+		yield return new WaitForSeconds(1f);
+		buttonHolder.gameObject.SetActive(false);
+	}
+
+	public void SpawnCubeButton()
+	{
+		if (proceedButton)
+			return;
+		GameObject newCube = Instantiate(cubePrefab, cubeSpawnPos, Quaternion.Euler(Random.Range(0f, 90f), Random.Range(0f, 90f), Random.Range(0f, 90f)));
+		if (spawnedCubes.Count > 20)
+		{
+			Destroy(spawnedCubes[0].gameObject);
+			spawnedCubes.RemoveAt(0);
+		}
+		spawnedCubes.Add(newCube.gameObject);
 	}
 }
