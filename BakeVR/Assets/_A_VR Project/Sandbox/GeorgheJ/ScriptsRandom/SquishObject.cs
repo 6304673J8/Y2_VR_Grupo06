@@ -22,7 +22,7 @@ public class SquishObject : MonoBehaviour
         //var grabbable = GetComponent<Grabbable>();
         var particles = Instantiate(fx, this.transform.position, this.transform.rotation).GetComponent<ParticleSystem>();
 
-        //ParticleSystem.VelocityOverLifetimeModule module = fx.velocityOverLifetime;
+        ParticleSystem.VelocityOverLifetimeModule module = particles.velocityOverLifetime;
         var rb = GetComponent<Rigidbody>();
        // module.x = rb.velocity.x;
         //module.y = rb.velocity.y;

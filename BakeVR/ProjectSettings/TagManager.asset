@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Flashlight
   - MainSolution
+  - Box
+  - FloorGuardian
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - NonPhysics Hand
   - Grabbable
   - Invisible
-  - 
+  - Hand
   - 
   - 
   - 

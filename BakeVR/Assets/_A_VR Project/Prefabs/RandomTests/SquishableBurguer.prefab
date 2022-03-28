@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4166551379684032069}
   - component: {fileID: 4166551379684032070}
   - component: {fileID: 4166551379684032071}
+  - component: {fileID: 1392762316}
   m_Layer: 10
   m_Name: SquishableBurguer
   m_TagString: Untagged
@@ -29,10 +30,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4166551379684032065}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.055, y: 0.898, z: -0.139}
-  m_LocalScale: {x: 0.33785933, y: 0.54057497, z: 0.54057497}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -150,19 +151,7 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4166551379684032071}
-        m_TargetAssemblyTypeName: SquishObject, Assembly-CSharp
-        m_MethodName: DelayedSmash
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -180,7 +169,19 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4166551379684032071}
+        m_TargetAssemblyTypeName: SquishObject, Assembly-CSharp
+        m_MethodName: DoSmash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -264,3 +265,30 @@ MonoBehaviour:
   fx: {fileID: 2552191813792651433, guid: a6e45bfb87321434baea79f8c4c552f6, type: 3}
   squishSound: {fileID: 8300000, guid: 7bb57394759014e20b218cf8f8040440, type: 3}
   squishVolume: 1
+--- !u!114 &1392762316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166551379684032065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4543a4375a17043b57fa0234dd5c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTriggerFloorGuard:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4166551379684032071}
+        m_TargetAssemblyTypeName: SquishObject, Assembly-CSharp
+        m_MethodName: DelayedSmash
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.7
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
