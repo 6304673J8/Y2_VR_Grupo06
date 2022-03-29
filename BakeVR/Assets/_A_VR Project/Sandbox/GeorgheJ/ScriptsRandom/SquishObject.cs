@@ -24,9 +24,9 @@ public class SquishObject : MonoBehaviour
 
         ParticleSystem.VelocityOverLifetimeModule module = particles.velocityOverLifetime;
         var rb = GetComponent<Rigidbody>();
-       // module.x = rb.velocity.x;
-        //module.y = rb.velocity.y;
-       // module.z = rb.velocity.z;
+        module.x = rb.velocity.x;
+        module.y = rb.velocity.y;
+        module.z = rb.velocity.z;
 
         //grabbable.ForceHandsRelease();
 

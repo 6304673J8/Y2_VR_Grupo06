@@ -47,6 +47,7 @@ public class TutorialManager : MonoBehaviour
 	public Vector3 cubeSpawnPos;
 	public GameObject explodingTarget;
 	public GameObject buttonsHolder;
+	public GameObject nextTutorialButton;
 	public bool proceedButton { get; set; } = false;
 	private TutorialUI actionObjectUI;
 
@@ -59,6 +60,10 @@ public class TutorialManager : MonoBehaviour
 	public bool actionedObject { get; set; } = false;
 	//private TutorialUI actionObjectUI;
 	private bool respawningActionObject = false;
+
+	[Header("Stage 4")]
+	public GameObject tutorialSocketBase;
+
 
 
 	//[Header("Ready")]
@@ -91,6 +96,7 @@ public class TutorialManager : MonoBehaviour
 		yield return Tutorial_1_1();
 		//- Hands Interaction
 		yield return Tutorial_1_2();
+		
 		// BASIC INTERACTION
 		//- Grab and Throw Objects -
 		yield return Tutorial_2_0();
@@ -99,6 +105,10 @@ public class TutorialManager : MonoBehaviour
 		// COMPLEX INTERACTION
 		//- Trigger While Holding Objects -
 		yield return Tutorial_3_0();
+		
+		// SOCKETS INTERACTION
+		//- Socket Basics -
+		yield return Tutorial_4_0();
 
 	}
 
@@ -329,22 +339,23 @@ public class TutorialManager : MonoBehaviour
 		//bool exploded = false;
 		yield return new WaitForSeconds(.2f);
 		buttonsHolder.gameObject.SetActive(true);
+
+		var nextTutorialUI = Instantiate(tutorialUIPrefab,
+			nextTutorialButton.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+			Quaternion.identity).GetComponent<TutorialUI>();
+
+		nextTutorialUI.StartUI(playerEye, nextTutorialButton.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		nextTutorialUI.text.text = "Presiona el botón para avanzar al siguiente tutorial.";
+
 		yield return new WaitUntil(() => proceedButton);
 		//Ding 
 
 		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
-
+		nextTutorialUI.ToggleThumbsUp(true);
 		Destroy(explodingTarget.gameObject);
 
-		/*var cubeUI = Instantiate(tutorialUIPrefab,
-			explosiveCube.transform.position + new Vector3(-0.2f, 0.2f, 0f),
-			Quaternion.identity).GetComponent<TutorialUI>();
-
-		cubeUI.StartUI(playerEye, explosiveCube.gameObject,
-			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
-
-		cubeUI.text.text = "Usa el gatillo del dedo medio para agarrar y soltar objetos.";
-		*/
 		foreach (GameObject obj in spawnedCubes)
         {
 			yield return new WaitForSeconds(0.05f);
@@ -352,6 +363,7 @@ public class TutorialManager : MonoBehaviour
 		}
 		spawnedCubes.Clear();
 		yield return new WaitForSeconds(.5f);
+		Destroy(nextTutorialUI.gameObject);
 		buttonsHolder.gameObject.SetActive(false);
 	}
 
@@ -372,7 +384,38 @@ public class TutorialManager : MonoBehaviour
 		actionObjectUI.StartUI(playerEye, currentActionObject.gameObject,
 			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
 
-		actionObjectUI.text.text = "Prueba a coger el objeto y presionar el gatillo del dedo índice para accionarlo.";
+		actionObjectUI.text.text = "Prueba a coger el objeto y presiona el gatillo del dedo índice para accionarlo.";
+		actionObjectPedestal.gameObject.SetActive(true);
+
+		while (!actionedObject)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+		actionObjectUI.ToggleThumbsUp(true);
+		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		yield return new WaitForSeconds(1f);
+		Destroy(actionObjectUI.gameObject);
+		actionObjectPedestal.SetActive(false);
+	}
+
+	IEnumerator Tutorial_4_0()
+	{
+		//audioSource.Stop();
+		//audioSource.clip = audioClips[6];
+		//audioSource.Play();
+
+		yield return new WaitForSeconds(.5f);
+
+		//Socket Learning Tutorial
+		
+		actionObjectUI = Instantiate(tutorialUIPrefab,
+			currentActionObject.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+			Quaternion.identity).GetComponent<TutorialUI>();
+
+		actionObjectUI.StartUI(playerEye, currentActionObject.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		actionObjectUI.text.text = "Prueba a coger el objeto y presiona el gatillo del dedo índice para accionarlo.";
 		actionObjectPedestal.gameObject.SetActive(true);
 
 		while (!actionedObject)
@@ -411,7 +454,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		respawningActionObject = false;
 		var obj = Instantiate(actionObjectPrefab, actionObjectSpawnPos, Quaternion.identity);
-		//Add the events
+		//To Comprobate - Pressure Sensor -
 		/*obj.GetComponent<XRInteractableEvent>().onActivate.AddListener(SmashActionObject);
 		obj.GetComponent<XRBaseInteractable>().onActivate.AddListener(() => actionedObject = true);*/
 		//obj.GetComponent<FloorGuardian>().OnTriggerFloorGuard.AddListener(SmashActionObject);
