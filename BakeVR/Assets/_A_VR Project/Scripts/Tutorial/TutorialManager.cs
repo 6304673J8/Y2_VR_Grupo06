@@ -53,17 +53,31 @@ public class TutorialManager : MonoBehaviour
 
 	[Header("Stage 3")]
 	public GameObject currentActionObject;
-	//private List<GameObject> spawnedActionObjects = new List<GameObject>();
 	public GameObject actionObjectPedestal;
 	public Vector3 actionObjectSpawnPos;
 	public GameObject actionObjectPrefab;
+
 	public bool actionedObject { get; set; } = false;
-	//private TutorialUI actionObjectUI;
 	private bool respawningActionObject = false;
 
 	[Header("Stage 4")]
+	public GameObject leverGameObject;
 	public GameObject tutorialSocketBase;
 
+	public GameObject socketUIAttachPoint;
+	public GameObject leverAttachPoint;
+
+	private TutorialUI socketTutorialInitialUI;
+	private TutorialUI leverTutorialUI;
+
+	public bool actionedSocket { get; set; } = false;
+	public bool returnedSocket { get; set; } = false;
+	public bool actionedLever { get; set; } = false;
+
+	[Header("Stage 5")]
+	public GameObject teleportGameObject;
+
+	public bool actionedTeleport { get; set; } = false;
 
 
 	//[Header("Ready")]
@@ -109,7 +123,12 @@ public class TutorialManager : MonoBehaviour
 		// SOCKETS INTERACTION
 		//- Socket Basics -
 		yield return Tutorial_4_0();
+		//- Socket Manager / Lever -
+		yield return Tutorial_4_1();
 
+		// TELEPORTATION INTERACTION
+		//- Basic Teleport -
+		yield return Tutorial_5_0();
 	}
 
 	IEnumerator Tutorial_0()
@@ -117,7 +136,7 @@ public class TutorialManager : MonoBehaviour
 		//audioSource.clip = audioClips[0];
 		//audioSource.Play();
 		//yield return new WaitUntil(() => !audioSource.isPlaying);
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 	}
 
 	// BASIC INPUT FUNCTION - TRIGGER
@@ -407,26 +426,83 @@ public class TutorialManager : MonoBehaviour
 		yield return new WaitForSeconds(.5f);
 
 		//Socket Learning Tutorial
-		
-		actionObjectUI = Instantiate(tutorialUIPrefab,
-			currentActionObject.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+		socketTutorialInitialUI = Instantiate(tutorialUIPrefab,
+			socketUIAttachPoint.transform.position + new Vector3(-0.2f, 0.2f, 0f),
 			Quaternion.identity).GetComponent<TutorialUI>();
-
-		actionObjectUI.StartUI(playerEye, currentActionObject.gameObject,
+		
+		socketTutorialInitialUI.StartUI(playerEye, socketUIAttachPoint.gameObject,
 			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+		
+		socketTutorialInitialUI.text.text = "Prueba a quitar y colocar alguno de los siguientes objetos.";
 
-		actionObjectUI.text.text = "Prueba a coger el objeto y presiona el gatillo del dedo índice para accionarlo.";
-		actionObjectPedestal.gameObject.SetActive(true);
-
-		while (!actionedObject)
+		tutorialSocketBase.gameObject.SetActive(true);
+		while (!actionedSocket && !returnedSocket)
 		{
 			yield return new WaitForEndOfFrame();
 		}
-		actionObjectUI.ToggleThumbsUp(true);
+		socketTutorialInitialUI.ToggleThumbsUp(true);
 		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(1f);
-		Destroy(actionObjectUI.gameObject);
-		actionObjectPedestal.SetActive(false);
+		Destroy(socketTutorialInitialUI.gameObject);
+	}
+
+	IEnumerator Tutorial_4_1()
+	{
+		//audioSource.Stop();
+		//audioSource.clip = audioClips[7];
+		//audioSource.Play();
+		yield return new WaitForSeconds(.5f);
+
+		leverTutorialUI = Instantiate(tutorialUIPrefab,
+			leverAttachPoint.transform.position + new Vector3(-0.2f, 0.2f, 0f),
+			Quaternion.identity).GetComponent<TutorialUI>();
+
+		leverTutorialUI.StartUI(playerEye, leverAttachPoint.gameObject,
+			new Vector3(-0.2f, 0.2f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		leverTutorialUI.text.text = "Repara la palanca acercando el objeto faltante y accionala.";
+		leverGameObject.gameObject.SetActive(true);
+		actionedLever = false;
+		while (!actionedLever)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+
+		leverTutorialUI.ToggleThumbsUp(true);
+
+		yield return new WaitForSeconds(1f);
+		Destroy(leverTutorialUI.gameObject);
+		tutorialSocketBase.gameObject.SetActive(false);
+	}
+
+	IEnumerator Tutorial_5_0()
+    {
+		//audioSource.Stop();
+		//audioSource.clip = audioClips[7];
+		//audioSource.Play();
+		yield return new WaitForSeconds(.5f);
+
+		var leftTeleportUI = Instantiate(tutorialUIPrefab,
+					leftHandAttachPoint.transform.position + new Vector3(-0.2f, 0.1f, 0f),
+					Quaternion.identity).GetComponent<TutorialUI>();
+
+		leftTeleportUI.StartUI(playerEye, leftHandAttachPoint.gameObject,
+					new Vector3(-0.2f, 0.1f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		leftTeleportUI.text.text = "Mueve el joystick hacia delante.";
+
+		teleportGameObject.gameObject.SetActive(true);
+
+		while (!actionedTeleport)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+
+		leftTeleportUI.ToggleThumbsUp(true);
+
+		yield return new WaitForSeconds(1f);
+		Destroy(leftTeleportUI.gameObject);
+		tutorialSocketBase.gameObject.SetActive(false);
 	}
 
 	public void SpawnCubeButton()

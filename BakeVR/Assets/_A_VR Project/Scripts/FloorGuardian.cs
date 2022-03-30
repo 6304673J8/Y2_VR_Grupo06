@@ -11,6 +11,7 @@ public class FloorGuardian : MonoBehaviour
         if (other.CompareTag("FloorGuardian"))
         {
             //The object has touched the floor 
+            Debug.Log("OJITOOOO");
             OnTriggerFloorGuard?.Invoke();
         }
     }
