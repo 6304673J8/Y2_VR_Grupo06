@@ -191,8 +191,8 @@ public class TutorialManager : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 
-		//audioSource.Stop();
-		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		audioSource.Stop();
+		Instantiate(oneshotAudioPrefab, null).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(.4f);
 		foreach (var ui in currentUIs)
 		{
@@ -227,7 +227,7 @@ public class TutorialManager : MonoBehaviour
 			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
 			if (tutorialCubesManager.cleanedTable == true && !cleanedTable)
 			{
-				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, leftHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				cleanedTable = true;
 				Debug.Log("CLEANED TABLE");
 			}
@@ -269,7 +269,7 @@ public class TutorialManager : MonoBehaviour
 			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
 			if (tutorialButtonManager.cleanedTable == true && !cleanedButtonTable)
 			{
-				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, leftHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				cleanedButtonTable = true;
 				Debug.Log("CLEANED TABLE");
 			}
@@ -278,8 +278,8 @@ public class TutorialManager : MonoBehaviour
 		buttonUI.ToggleThumbsUp(true);
 		yield return new WaitForSeconds(.4f);
 
-		//audioSource.Stop();
-		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		audioSource.Stop();
+		Instantiate(oneshotAudioPrefab, null).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(.4f);
 		Destroy(buttonUI.gameObject);
 		tutorialButtonTable.gameObject.SetActive(false);
@@ -315,13 +315,13 @@ public class TutorialManager : MonoBehaviour
 		{
 			if (tutorialInteractable.m_Held == true && !grabbed)
 			{
-				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, leftHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				grabbed = true;
 				Debug.Log("I GRABBED");
 			}
 			if (tutorialInteractable.m_Thrown == true && !released)
 			{
-				//Instantiate(oneshotAudioPrefab, rightHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, rightHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				released = true;
 				Debug.Log("I LET GO");
 			}
@@ -373,7 +373,7 @@ public class TutorialManager : MonoBehaviour
 		yield return new WaitUntil(() => proceedButton);
 		//Ding 
 
-		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		Instantiate(oneshotAudioPrefab, null).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[1], false);
 		nextTutorialUI.ToggleThumbsUp(true);
 		Destroy(explodingTarget.gameObject);
 
@@ -413,7 +413,7 @@ public class TutorialManager : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 		actionObjectUI.ToggleThumbsUp(true);
-		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		Instantiate(oneshotAudioPrefab, null).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(1f);
 		Destroy(actionObjectUI.gameObject);
 		actionObjectPedestal.SetActive(false);
@@ -443,7 +443,7 @@ public class TutorialManager : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 		socketTutorialInitialUI.ToggleThumbsUp(true);
-		//Instantiate(oneshotAudioPrefab, null).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[1], false);
+		Instantiate(oneshotAudioPrefab, null).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[1], false);
 		yield return new WaitForSeconds(1f);
 		Destroy(socketTutorialInitialUI.gameObject);
 	}
