@@ -204,8 +204,8 @@ public class TutorialManager : MonoBehaviour
 	// BASIC INTERACTION - PHYSICS
 	IEnumerator Tutorial_1_1()
 	{
-		//audioSource.clip = audioClips[2];
-		//audioSource.Play();
+		audioSource.clip = audioClips[2];
+		audioSource.Play();
 		bool cleanedTable = false;
 		yield return new WaitForSeconds(0.5f);
 		
@@ -246,8 +246,8 @@ public class TutorialManager : MonoBehaviour
 	// BASIC INTERACTION - PHYSICS + BUTTON
 	IEnumerator Tutorial_1_2()
 	{
-		//audioSource.clip = audioClips[2];
-		//audioSource.Play();
+		audioSource.clip = audioClips[3];
+		audioSource.Play();
 		bool cleanedButtonTable = false;
 		yield return new WaitForSeconds(0.5f);
 
@@ -289,7 +289,7 @@ public class TutorialManager : MonoBehaviour
 	IEnumerator Tutorial_2_0()
 	{
 		//audioSource.Stop();
-		//audioSource.clip = audioClips[3];
+		//audioSource.clip = audioClips[4];
 		//audioSource.Play();
 		bool grabbed = false;
 		bool released = false;
@@ -332,9 +332,9 @@ public class TutorialManager : MonoBehaviour
 		//Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
 		yield return new WaitForSeconds(1f);
 
-		//audioSource.Stop();
-		//audioSource.clip = audioClips[4];
-		//audioSource.Play();
+		audioSource.Stop();
+		audioSource.clip = audioClips[4];
+		audioSource.Play();
 		yield return new WaitForSeconds(1f);
 
 		cubeUI.text.text = "Lanza el cubo al objetivo.";
@@ -353,9 +353,9 @@ public class TutorialManager : MonoBehaviour
 
 	IEnumerator Tutorial_2_1()
 	{
-		//audioSource.Stop();
-		//audioSource.clip = audioClips[5];
-		//audioSource.Play();
+		audioSource.Stop();
+		audioSource.clip = audioClips[5];
+		audioSource.Play();
 		//bool thrown = false;
 		//bool exploded = false;
 		yield return new WaitForSeconds(.2f);
@@ -390,9 +390,9 @@ public class TutorialManager : MonoBehaviour
 
 	IEnumerator Tutorial_3_0()
     {
-		//audioSource.Stop();
-		//audioSource.clip = audioClips[6];
-		//audioSource.Play();
+		audioSource.Stop();
+		audioSource.clip = audioClips[7];
+		audioSource.Play();
 
 		yield return new WaitForSeconds(.5f);
 
@@ -450,9 +450,9 @@ public class TutorialManager : MonoBehaviour
 
 	IEnumerator Tutorial_4_1()
 	{
-		//audioSource.Stop();
-		//audioSource.clip = audioClips[7];
-		//audioSource.Play();
+		audioSource.Stop();
+		audioSource.clip = audioClips[8];
+		audioSource.Play();
 		yield return new WaitForSeconds(.5f);
 
 		leverTutorialUI = Instantiate(tutorialUIPrefab,

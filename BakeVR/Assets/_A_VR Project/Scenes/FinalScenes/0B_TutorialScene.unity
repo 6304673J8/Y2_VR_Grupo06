@@ -16871,6 +16871,14 @@ MonoBehaviour:
   audioSource: {fileID: 1442137385}
   audioClips:
   - {fileID: 8300000, guid: 66bd827bbbd8e9c4496f3a618adbd225, type: 3}
+  - {fileID: 8300000, guid: e0c27ac5532e47d488d0e2e5a18d3617, type: 3}
+  - {fileID: 8300000, guid: 474a1553170ec6447b85f0378c409dd7, type: 3}
+  - {fileID: 8300000, guid: 1289d1feb08b5da42b5848fc6985c76a, type: 3}
+  - {fileID: 8300000, guid: 261fb1266eab53d4199e4b732feda37b, type: 3}
+  - {fileID: 8300000, guid: 68d4099dd2213d24e8bab5964ce49291, type: 3}
+  - {fileID: 8300000, guid: 3caee786342257646b6568fd53586566, type: 3}
+  - {fileID: 8300000, guid: 42949bea73211b147960d358bd54ea56, type: 3}
+  - {fileID: 8300000, guid: 6ab5baa6c5dfd8043b51afdf2fe17ffb, type: 3}
   oneshotAudioPrefab: {fileID: 3417981528652616178, guid: 933e05f56e7ce584ab3242738fc0f3c8, type: 3}
   feedbackClips:
   - {fileID: 8300000, guid: 694d4c087ab861d4fb0b038aa144ac4e, type: 3}
