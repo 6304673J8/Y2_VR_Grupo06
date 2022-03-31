@@ -505,6 +505,34 @@ public class TutorialManager : MonoBehaviour
 		tutorialSocketBase.gameObject.SetActive(false);
 	}
 
+	IEnumerator Tutorial_5_1()
+	{
+		//audioSource.Stop();
+		//audioSource.clip = audioClips[7];
+		//audioSource.Play();
+		yield return new WaitForSeconds(.5f);
+
+		var leftTeleportUI = Instantiate(tutorialUIPrefab,
+					leftHandAttachPoint.transform.position + new Vector3(-0.2f, 0.1f, 0f),
+					Quaternion.identity).GetComponent<TutorialUI>();
+
+		leftTeleportUI.StartUI(playerEye, leftHandAttachPoint.gameObject,
+					new Vector3(-0.2f, 0.1f, 0f), TutorialUI.AttachToH.LEFT_H);
+
+		leftTeleportUI.text.text = "Usa el gatillo del dedo medio para teletransportarte.";
+
+		while (!actionedTeleport)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+
+		leftTeleportUI.ToggleThumbsUp(true);
+
+		yield return new WaitForSeconds(1f);
+		Destroy(leftTeleportUI.gameObject);
+		tutorialSocketBase.gameObject.SetActive(false);
+	}
+
 	public void SpawnCubeButton()
 	{
 		if (proceedButton)

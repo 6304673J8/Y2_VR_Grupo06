@@ -16282,8 +16282,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TP_Transformer
       objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157150, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
@@ -16291,11 +16299,23 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1454840330}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1442137382}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
@@ -16303,19 +16323,40 @@ PrefabInstance:
       value: GoToSceneAsync
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_actionedTeleport
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ComplexSceneTransitionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TutorialManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
       propertyPath: m_Teleporting.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223227660252157151, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+--- !u!1 &1334508831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8223227660252157150, guid: 7821ff8c80900834f9b38f66a78616a5, type: 3}
+  m_PrefabInstance: {fileID: 1334508830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1339895500
 GameObject:
   m_ObjectHideFlags: 0
@@ -16852,7 +16893,7 @@ MonoBehaviour:
   tutorialSocketBase: {fileID: 2120233145}
   socketUIAttachPoint: {fileID: 1517941048}
   leverAttachPoint: {fileID: 4794226606169035897}
-  teleportGameObject: {fileID: 0}
+  teleportGameObject: {fileID: 1334508831}
 --- !u!4 &1442137383
 Transform:
   m_ObjectHideFlags: 0
