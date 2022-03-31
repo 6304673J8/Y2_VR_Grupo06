@@ -178,13 +178,13 @@ public class TutorialManager : MonoBehaviour
 			// Grip Comprobation :         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
 			if (inputComprobationManager.b_lTriggerIsActive && !validLeftH)
 			{
-				//Instantiate(oneshotAudioPrefab, leftHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, leftHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				validLeftH = true;
 				currentUIs[0].ToggleThumbsUp(true);
 			}
 			if (inputComprobationManager.b_rTriggerIsActive && !validRightH)
 			{
-				//Instantiate(oneshotAudioPrefab, rightHandLink.transform.position, Quaternion.identity).GetComponent<OneshotAudio>().LaunchAudio(feedbackClips[0], true);
+				Instantiate(oneshotAudioPrefab, rightHandAttachPoint.transform.position, Quaternion.identity).GetComponent<OneShotAudio>().InstantiateAudio(feedbackClips[0], true);
 				validRightH = true;
 				currentUIs[1].ToggleThumbsUp(true);
 			}
