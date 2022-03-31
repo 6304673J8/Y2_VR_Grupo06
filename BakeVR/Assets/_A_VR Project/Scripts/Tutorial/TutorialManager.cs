@@ -133,9 +133,9 @@ public class TutorialManager : MonoBehaviour
 
 	IEnumerator Tutorial_0()
 	{
-		//audioSource.clip = audioClips[0];
-		//audioSource.Play();
-		//yield return new WaitUntil(() => !audioSource.isPlaying);
+		audioSource.clip = audioClips[0];
+		audioSource.Play();
+		yield return new WaitUntil(() => !audioSource.isPlaying);
 		yield return new WaitForSeconds(1f);
 	}
 

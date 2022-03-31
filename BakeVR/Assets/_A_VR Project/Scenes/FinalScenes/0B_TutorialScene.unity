@@ -16869,9 +16869,12 @@ MonoBehaviour:
   leftHandAttachPoint: {fileID: 1526256583}
   rightHandAttachPoint: {fileID: 7904941}
   audioSource: {fileID: 1442137385}
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 66bd827bbbd8e9c4496f3a618adbd225, type: 3}
   oneshotAudioPrefab: {fileID: 3417981528652616178, guid: 933e05f56e7ce584ab3242738fc0f3c8, type: 3}
-  feedbackClips: []
+  feedbackClips:
+  - {fileID: 8300000, guid: 694d4c087ab861d4fb0b038aa144ac4e, type: 3}
+  - {fileID: 8300000, guid: f0c40535c659ace4e9f42f071bdad406, type: 3}
   playerEye: {fileID: 1675955369}
   tutorialUIPrefab: {fileID: 6109184480785792275, guid: 00e93790504e62d42952a2871f52688f, type: 3}
   tutorialCubesManager: {fileID: 640589453}
