@@ -18765,6 +18765,9 @@ MonoBehaviour:
   inputComprobationManager: {fileID: 1442137384}
   leftHandAttachPoint: {fileID: 1526256583}
   rightHandAttachPoint: {fileID: 7904941}
+  audioSource: {fileID: 0}
+  audioClips: []
+  feedbackClips: []
   playerEye: {fileID: 1675955369}
   tutorialUIPrefab: {fileID: 6109184480785792275, guid: 00e93790504e62d42952a2871f52688f, type: 3}
   tutorialCubesManager: {fileID: 640589453}
@@ -18791,6 +18794,7 @@ MonoBehaviour:
   tutorialSocketBase: {fileID: 2120233145}
   socketUIAttachPoint: {fileID: 1517941048}
   leverAttachPoint: {fileID: 4794226606169035897}
+  teleportGameObject: {fileID: 0}
 --- !u!4 &1442137383
 Transform:
   m_ObjectHideFlags: 0

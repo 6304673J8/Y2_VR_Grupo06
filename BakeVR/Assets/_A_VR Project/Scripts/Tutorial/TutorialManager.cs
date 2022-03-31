@@ -14,11 +14,11 @@ public class TutorialManager : MonoBehaviour
 	public Transform leftHandAttachPoint;
 	public Transform rightHandAttachPoint;
 
-	/*[Header("Audio")]
+	[Header("Audio")]
 	public AudioSource audioSource;
 	public AudioClip[] audioClips;
 	public GameObject oneshotAudioPrefab;
-	public AudioClip[] feedbackClips;*/
+	public AudioClip[] feedbackClips;
 
 	[Header("World UI")]
 	public GameObject playerEye;
@@ -144,6 +144,8 @@ public class TutorialManager : MonoBehaviour
 	{
 		//audioSource.clip = audioClips[1];
 		//audioSource.Play();
+		//yield return new WaitUntil(() => !audioSource.isPlaying);
+
 		yield return new WaitForSeconds(0.5f);
 		//Instantiate the UIs in the hands
 		//LeftHand
