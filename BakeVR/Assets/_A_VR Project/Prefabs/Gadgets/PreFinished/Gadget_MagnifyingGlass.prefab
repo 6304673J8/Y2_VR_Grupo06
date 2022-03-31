@@ -103,18 +103,6 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6588241835376443987}
-        m_TargetAssemblyTypeName: ChangeMaterial, Assembly-CSharp
-        m_MethodName: SetOtherMaterial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6588241835376443980}
         m_TargetAssemblyTypeName: GadgetMagnifier, Assembly-CSharp
         m_MethodName: TurnOn
@@ -127,12 +115,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6588241835376443987}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeMaterial, Assembly-CSharp
-        m_MethodName: SetOriginalMaterial
+        m_MethodName: SetOtherMaterial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -142,9 +127,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 6588241835376443980}
         m_TargetAssemblyTypeName: GadgetMagnifier, Assembly-CSharp
         m_MethodName: TurnOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ChangeMaterial, Assembly-CSharp
+        m_MethodName: SetOriginalMaterial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -535,8 +535,8 @@ GameObject:
   - component: {fileID: 1532892569910826167}
   - component: {fileID: 7399341483306650365}
   - component: {fileID: 7175808742317675147}
-  - component: {fileID: 6588241835376443987}
   - component: {fileID: 6588241835376443980}
+  - component: {fileID: 7586818063333828557}
   m_Layer: 0
   m_Name: MagnifyingGlass_Lens
   m_TagString: Untagged
@@ -609,19 +609,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6588241835376443987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586818063451041143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0efd09f44c334cc45abf43175b085d56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherMaterial: {fileID: 2100000, guid: 6b1c699fc6dbf004bb6f769f89368626, type: 2}
 --- !u!114 &6588241835376443980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,6 +622,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lensCamera: {fileID: 4355347262649768264}
+--- !u!114 &7586818063333828557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586818063451041143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306b2390f6bbfcd469fee7f067f6d9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherMaterial: {fileID: 2100000, guid: 0b7430f7757f99146a66a3c6a78c411e, type: 2}
 --- !u!1 &9174235828367500582
 GameObject:
   m_ObjectHideFlags: 0
