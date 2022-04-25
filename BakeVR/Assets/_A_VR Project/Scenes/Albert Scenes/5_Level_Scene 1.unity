@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 3065019114331529790, guid: 93520ee2b354f2a4c94772a50906ba5f, type: 3}
       propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1792670079}
+      objectReference: {fileID: 0}
     - target: {fileID: 3065019114331529790, guid: 93520ee2b354f2a4c94772a50906ba5f, type: 3}
       propertyPath: m_Deactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -459,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 3065019114331529790, guid: 93520ee2b354f2a4c94772a50906ba5f, type: 3}
       propertyPath: m_Deactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1792670079}
+      objectReference: {fileID: 0}
     - target: {fileID: 3065019114331529790, guid: 93520ee2b354f2a4c94772a50906ba5f, type: 3}
       propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TurnOn
@@ -4962,17 +4962,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92fd9c072f9ba104fa00c9ec6117e24c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1792670079 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6588241835376443987, guid: 93520ee2b354f2a4c94772a50906ba5f, type: 3}
-  m_PrefabInstance: {fileID: 117672635}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0efd09f44c334cc45abf43175b085d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1850428483
