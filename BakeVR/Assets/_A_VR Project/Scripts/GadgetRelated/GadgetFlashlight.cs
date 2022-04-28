@@ -3,7 +3,7 @@ using UnityEngine;
 public class GadgetFlashlight : MonoBehaviour
 {
     [SerializeField] private GameObject spotLight;
-    //[SerializeField] private GameObject lightCollider;
+    [SerializeField] private GameObject lightTriggerBody;
     [SerializeField] private AudioSource audioSrc;
     private bool b_FlashLightIsActive;
 
@@ -36,12 +36,12 @@ public class GadgetFlashlight : MonoBehaviour
     private void TurnOn()
     {
         spotLight.SetActive(true);
-        //lightCollider.SetActive(true);
+        lightTriggerBody.SetActive(true);
     }
 
     private void TurnOff()
     {
         spotLight.SetActive(false);
-        //lightCollider.SetActive(false);
+        lightTriggerBody.SetActive(false);
     }       
 }

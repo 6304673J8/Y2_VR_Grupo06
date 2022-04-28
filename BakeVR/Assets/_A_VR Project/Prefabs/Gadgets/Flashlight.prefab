@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &398821369488086143
 Transform:
   m_ObjectHideFlags: 0
@@ -271,13 +271,13 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 6
+  fallOffEnd: 9
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
   glareFrontal: 0.5
   glareBehind: 0.5
   fresnelPow: 8
-  noiseMode: 0
+  noiseMode: 1
   noiseIntensity: 0.5
   noiseScaleUseGlobal: 1
   noiseScaleLocal: 0.5

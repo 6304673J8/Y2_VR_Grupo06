@@ -6,8 +6,12 @@ TagManager:
   tags:
   - Flashlight
   - MainSolution
-  - Box
   - FloorGuardian
+  - Key_Door
+  - Trail
+  - Key_Simple
+  - Obstacle
+  - Purificator
   layers:
   - Default
   - TransparentFX

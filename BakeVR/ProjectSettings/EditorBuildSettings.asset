@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/Geo Scenes/0_MainMenu.unity
-    guid: f44ece25abc62584a9a9c90dcc35d709
+    path: Assets/_A_VR Project/Scenes/FinalScenes/0A_MainMenu.unity
+    guid: 5238b62ea9af14f419917be41d30c588
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/Geo Scenes/2_TeleportScene.unity
-    guid: da9aa9ee67000d247aeb146c877a35b4
+    path: Assets/_A_VR Project/Scenes/FinalScenes/0B_TutorialScene.unity
+    guid: 778b44b4852172a489175fa01142cbaa
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/Geo Scenes/3_InteractableScene.unity
-    guid: 547e16b6d407c4243aed5c2da484ff6e
+    path: Assets/_A_VR Project/Scenes/FinalScenes/0C_EscapeRoom.unity
+    guid: 04d17dde42b6e5746a2097a27e7ad65c
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/Geo Scenes/4_MechanicsScene.unity
-    guid: 153f74aa1c01f4c4bbeb6d13a5988ad6
+    path: Assets/_A_VR Project/Scenes/FinalScenes/0D_FinalScene.unity
+    guid: 68908c485fe8d924b819f561cdd926a3
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2814e759ec94f4e43aa83cfb95be8ca2, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7f030596209b8674fb104b7190de6fb9, type: 2}
