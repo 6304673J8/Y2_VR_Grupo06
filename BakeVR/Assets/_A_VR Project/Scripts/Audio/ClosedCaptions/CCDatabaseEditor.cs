@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
+//using UnityEditor.Callbacks;
 
 /// <summary>
 /// This will display a window to simplify editing the Closed Caption database when double clicking a CCDatabase asset
 /// </summary>
-public class CCDatabaseEditor : EditorWindow
+/*public class CCDatabaseEditor : EditorWindow
 {
     CCDatabase m_EditedDatabase;
     int m_EditedEntry = -1;
@@ -176,4 +176,4 @@ public class CCDatabaseEditor : EditorWindow
             GUILayout.EndHorizontal();
         }
     }
-}
+}*/

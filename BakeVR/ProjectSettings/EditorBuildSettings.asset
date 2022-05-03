@@ -5,21 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/FinalScenes/0A_MainMenu.unity
-    guid: 5238b62ea9af14f419917be41d30c588
+    path: Assets/_A_VR Project/Scenes/BetaScenes/MainCase_Asylum_First.unity
+    guid: 41d106ecfbcdd0d44a857371c170b9dc
   - enabled: 1
-    path: Assets/_A_VR Project/Scenes/FinalScenes/0B_TutorialScene.unity
-    guid: 778b44b4852172a489175fa01142cbaa
-  - enabled: 1
-    path: Assets/_A_VR Project/Scenes/FinalScenes/0C_EscapeRoom.unity
-    guid: 04d17dde42b6e5746a2097a27e7ad65c
-  - enabled: 1
-    path: Assets/_A_VR Project/Scenes/FinalScenes/0D_FinalScene.unity
-    guid: 68908c485fe8d924b819f561cdd926a3
+    path: Assets/_A_VR Project/Scenes/BetaScenes/MainCase_Asylum_Second.unity
+    guid: d8db1fbf7e9f72b45ae8b8eff37c422a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2814e759ec94f4e43aa83cfb95be8ca2, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7f030596209b8674fb104b7190de6fb9, type: 2}
