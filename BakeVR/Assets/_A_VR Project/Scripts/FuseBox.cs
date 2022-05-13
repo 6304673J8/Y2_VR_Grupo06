@@ -5,6 +5,7 @@ public class FuseBox : MonoBehaviour
     public ParticleSystem[] SparkleFuseVFX;
     public ParticleSystem[] SwitchedOnVFX;
     public ParticleSystem[] SwitchedOffVFX;
+    [SerializeField] private string AudioName;
 
     bool b_FusePresent = false;
 
@@ -35,6 +36,7 @@ public class FuseBox : MonoBehaviour
 
         if (b_FusePresent)
         {
+            FindObjectOfType<AudioManager>().Play(AudioName);
             foreach (var s in SparkleFuseVFX)
             {
                 s.Play();

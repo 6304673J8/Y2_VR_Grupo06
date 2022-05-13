@@ -4,7 +4,7 @@ public class GadgetFlashlight : MonoBehaviour
 {
     [SerializeField] private GameObject spotLight;
     [SerializeField] private GameObject lightTriggerBody;
-    [SerializeField] private AudioSource audioSrc;
+    [SerializeField] private string AudioName;
     private bool b_FlashLightIsActive;
 
     // Start is called before the first frame update
@@ -12,7 +12,6 @@ public class GadgetFlashlight : MonoBehaviour
     {
         //TurnOff();
         b_FlashLightIsActive = false;
-        audioSrc = GetComponent<AudioSource>();
     }
 
     public void ActivateFlashlight()
@@ -24,12 +23,14 @@ public class GadgetFlashlight : MonoBehaviour
             Debug.Log("TurnedOn");
             TurnOn();
             b_FlashLightIsActive = true;
+            FindObjectOfType<AudioManager>().Play(AudioName);
         }
         else if(b_FlashLightIsActive == true)
         {
             Debug.Log("TurnedOff");
             TurnOff();
             b_FlashLightIsActive = false;
+            FindObjectOfType<AudioManager>().Play(AudioName);
         }
     }
 

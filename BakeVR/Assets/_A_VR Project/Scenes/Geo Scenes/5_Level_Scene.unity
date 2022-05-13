@@ -7568,7 +7568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotLight: {fileID: 1974489801523055564}
   lightTriggerBody: {fileID: 0}
-  audioSrc: {fileID: 0}
+  AudioName: 
 --- !u!23 &5121497884832845513
 MeshRenderer:
   m_ObjectHideFlags: 0
